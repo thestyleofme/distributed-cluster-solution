@@ -13,6 +13,7 @@
     <modules>
         <module>hash-demo</module>
         <module>global-id</module>
+        <module>time-job</module>
     </modules>
 
     <properties>

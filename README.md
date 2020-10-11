@@ -29,3 +29,7 @@ select LAST_INSERT_ID()；
 ```
 * SnowFlake 雪花算法（可以⽤，推荐）
 * 借助Redis的Incr命令获取全局唯⼀ID（推荐）
+
+### 分布式调度
+
+* Quartz
