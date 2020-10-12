@@ -11,7 +11,7 @@ import org.quartz.impl.StdSchedulerFactory;
  * @author isaac 2020/10/12 1:43
  * @since 1.0.0
  */
-public class QuartzMan {
+public class QuartzMain {
 
     /**
      * 创建任务调度器

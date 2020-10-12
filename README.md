@@ -33,3 +33,7 @@ select LAST_INSERT_ID()；
 ### 分布式调度
 
 * Quartz
+* elastic-job
+```
+表数据使用time-job/src/main/resources/elastic-job-test.sql，可模拟任务分片以及高可用
+```
