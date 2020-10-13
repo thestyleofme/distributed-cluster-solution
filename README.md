@@ -37,3 +37,37 @@ select LAST_INSERT_ID()；
 ```
 表数据使用time-job/src/main/resources/elastic-job-test.sql，可模拟任务分片以及高可用
 ```
+
+### Session一致性
+* Nginx的IP_HASH负载均衡策略
+```
+同⼀个客户端IP的请求都会被路由到同⼀个⽬标服务器，也叫做会话粘滞
+优点：
+配置简单，不⼊侵应⽤，不需要额外修改代码
+缺点：
+服务器重启Session丢失
+存在单点负载⾼的⻛险
+单点故障问题
+```
+* Session共享，Session集中存储（推荐）
+```
+优点:
+能适应各种负载均衡策略
+服务器重启或者宕机不会造成Session丢失
+扩展能⼒强
+适合⼤集群数量使⽤
+缺点：
+对应⽤有⼊侵，引⼊了和Redis的交互代码
+
+Spring Session使得基于Redis的Session共享应⽤起来⾮常之简单
+```
+
+![基于Redis的Session共享示例](docs/images/session共享.png)
+
+```
+基于login-demo模块，该模块有登录拦截验证，可用于session共享测试
+将该模块打包为war包(cd login-demo && mvn clean packge，target下LoginProject.war)，
+部署到分布式集群架构中，一个ngnix节点，两个tomcat节点，如上图所示
+—> Nginx（轮询策略） —> Tomcat1—> Tomcat2
+具体Nginx/tomcat配置可参考docs目录下，LoginProject.war放入tomcat1和tomcat2的webapps目录下即可
+```

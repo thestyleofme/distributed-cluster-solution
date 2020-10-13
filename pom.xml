@@ -14,6 +14,7 @@
         <module>hash-demo</module>
         <module>global-id</module>
         <module>time-job</module>
+        <module>login-demo</module>
     </modules>
 
     <properties>
